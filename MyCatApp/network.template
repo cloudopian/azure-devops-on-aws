@@ -1,0 +1,49 @@
+{
+   "AWSTemplateFormatVersion" : "2010-09-09",
+   "Resources" : {
+      "myVPC" : {
+         "Type" : "AWS::EC2::VPC",
+         "Properties" : {
+            "CidrBlock" : "10.0.0.0/16",
+    	    "EnableDnsSupport" : "false",
+    	    "EnableDnsHostnames" : "false",
+			"InstanceTenancy" : "default" ,
+             "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Ref": "AWS::StackName"
+                        }
+                    }
+                ]
+         }
+      },
+	  "Sub1":{
+		"Type" : "AWS::EC2::Subnet", 
+		"Properties" : { 
+            "AvailabilityZone": {
+                "Fn::Select": [
+                  "0",
+                  { "Fn::GetAZs": "" }
+                ]
+              },
+			"CidrBlock" : "10.0.1.0/24",
+			"VpcId" : {"Ref":"myVPC" }
+		}
+      }
+   },
+   
+   "Outputs":{
+           "SubnetIAID": {
+            "Description": "Subnet 1A ID in Availability Zone 1",
+            "Value": {
+                "Ref": "Sub1"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-PrivateSubnet1AID"
+                } 
+            }
+        }
+    }
+} 

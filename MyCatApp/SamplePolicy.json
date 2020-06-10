@@ -1,0 +1,48 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:Describe*",
+                "cloudformation:EstimateTemplateCost",
+                "cloudformation:Get*",
+                "cloudformation:List*",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteStack",
+                "cloudformation:UpdateStack"
+            ],
+            "Resource": "arn:*:cloudformation:*:*:stack/CatHome/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:createTags",
+                "ec2:CreateVpc",
+                "ec2:DeleteVpc",
+                "ec2:DescribeVpcAttribute",
+                "ec2:DescribeVpcs",
+                "ec2:ModifyVpcAttribute",
+                "ec2:AssociateVpcCidrBlock",
+                "ec2:DisassociateVpcCidrBlock",
+
+                "ec2:DescribeAccountAttributes",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeSubnets",
+                "ec2:CreateSubnet",
+                "ec2:DeleteSubnet",
+                "ec2:AssociateSubnetCidrBlock",
+                "ec2:DisassociateSubnetCidrBlock",
+                "ec2:ModifySubnetAttribute"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

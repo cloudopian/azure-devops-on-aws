@@ -1,0 +1,5 @@
+---
+aws_access_key_id: AKIAJW46EBOHRM33LKGA
+aws_secret_access_key: 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
+iam_user_arn: arn:aws:iam::123456789101:user/my-onpremises-machine-user
+region: ap-southeast-2
